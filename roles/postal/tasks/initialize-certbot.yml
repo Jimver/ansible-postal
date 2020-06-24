@@ -16,7 +16,7 @@
         replace: "    ssl_certificate_key      /etc/nginx/ssl/self-nginx.key;"
 
 - name: Immediately restart NGINX before test.
-  service:
+  systemd:
     name: nginx
     state: restarted
 

@@ -5,16 +5,16 @@
   command: timedatectl set-ntp true
 
 - name: restart fail2ban
-  service:
+  systemd:
     name: fail2ban
     state: restarted
 
 - name: restart ssh
-  service:
+  systemd:
     name: ssh
     state: restarted
 
 - name: restart postfix
-  service:
+  systemd:
     name: postfix
     state: restarted
