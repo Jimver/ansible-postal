@@ -1,5 +1,7 @@
 - name: restart postal
-  command: postal restart
+  systemd:
+    name: postal
+    state: restarted
 
 - name: restart nginx
   command: nginx -t
@@ -10,11 +12,11 @@
   notify: validated nginx reload
 
 - name: validated nginx restart
-  service:
+  systemd:
     name: nginx
     state: restarted
 
 - name: validated nginx reload
-  service:
+  systemd:
     name: nginx
     state: reloaded
