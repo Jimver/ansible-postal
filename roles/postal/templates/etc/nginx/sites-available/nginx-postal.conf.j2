@@ -1,13 +1,13 @@
 server {
-    listen [::]:80;
-    listen {{postal_primary_ip_for_web_management}}:80;
+    listen [{{postal_primary_ipv6_for_web_management}}]:80;
+    listen {{postal_primary_ipv4_for_web_management}}:80;
     server_name {{postal_web_host}};
     return 301 https://$host$request_uri;
 }
 
 server {
-    listen [::]:443 ssl;
-    listen {{postal_primary_ip_for_web_management}}:443 ssl;
+    listen [{{postal_primary_ipv6_for_web_management}}]:443 ssl;
+    listen {{postal_primary_ipv4_for_web_management}}:443 ssl;
     root /opt/postal/app/public;
     server_name {{postal_web_host}};
     ssl_certificate      /opt/postal/certificates/{{ postal_web_host }}/fullchain.pem;
