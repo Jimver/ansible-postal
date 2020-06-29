@@ -57,6 +57,12 @@
   notify: enable Timedatectl
   when: ansible_service_mgr == "systemd"
 
+- name: Allow bind to non-local address
+  sysctl:
+    name: net.ipv4.ip_nonlocal_bind
+    value: '1'
+    reload: yes
+
 - include_tasks: postfix.yml
 
 - include_tasks: users.yml
