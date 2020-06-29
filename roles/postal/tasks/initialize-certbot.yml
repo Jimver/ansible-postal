@@ -25,6 +25,7 @@
   args:
     chdir: /opt/postal/acme.sh/
   become_user: postal
+  become: yes
 
 - name: Create Let's Encrypt Certificate.
   shell: >
