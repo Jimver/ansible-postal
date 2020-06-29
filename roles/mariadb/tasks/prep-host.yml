@@ -7,7 +7,7 @@
 
 - name: Add MariaDB repo.
   apt_repository:
-    repo: 'deb [arch=amd64,arm64,ppc64el] http://nyc2.mirrors.digitalocean.com/mariadb/repo/10.4/ubuntu bionic main'
+    repo: 'deb [arch=amd64,arm64,ppc64el] http://ftp.nluug.nl/db/mariadb/repo/10.5/ubuntu bionic main'
     state: present
   register: mysql_new_install
 
@@ -15,6 +15,16 @@
   apt:
     state: latest
     name:
-      - mariadb-client-10.4
+      - mariadb-client-10.5
       - python-mysqldb
     update_cache: yes
+
+- name: Make sure pip3 is installed
+  apt:
+    name: python3-pip
+    state: latest
+
+- name: Make sure pymysql is present
+  pip:
+    name: pymysql
+    state: present

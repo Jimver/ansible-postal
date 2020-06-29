@@ -3,7 +3,7 @@
   apt:
     state: latest
     name:
-      - mariadb-server-10.4
+      - mariadb-server
     update_cache: yes
 
 - name: Ensure the custom MariaDB config is in place.
